@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html >
+<head>
+ <meta charset="UTF-8">
+ <title>LOVE HPM FOREVER</title>
+ <link rel="stylesheet" href="css/style.css">
+ <audio style="display:none; height: 0" id="bg-music" preload="auto" src="music/loveyou.mp3" loop="loop"></audio>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="star comet"></div>
+  
+  <div class='mainDiv'>
+	<div id="code" class="notebook">
+		<div  class="left">
+			<div class="page-inner" contenteditable>
+				<div>&nbsp; &nbsp;致我亲爱的猪婆:</div>
+				<div>&nbsp; &nbsp;忘了是怎么开始，也许就是对你有一种感觉，突然间发现自己已经深深爱上你，虽然正式在一起的时间很短，但似乎我们又在一起了很久。</div>
+				<div>&nbsp; &nbsp;我永远喜欢你，不是指我十年二十年一辈子喜欢你，而是指我这一刻喜欢你的程度，让我有足够的勇气对你说我永远喜欢你。</div>
+			</div>
+		</div>
+		<div  class="right">
+			<div class="page-inner" contenteditable>
+				HPM,我想告诉你：
+				<div>我喜欢你，每天都在想你;</div>
+				<div>我宠你，把你捧在手心里宠坏的那种；</div>
+				<div>我爱你，你所在的地方就是我追逐的方向;</div>
+				<div>谢谢你包容我所有的不好，谢谢你不抱怨我做的不好，谢谢你愿意陪着我，谢谢你让我越来越喜欢你，能够再遇见你，绝非偶然。</div>
+			</div>
+		</div>
+	</div>
+	<div id="loveHeart">
+		<canvas id="garden"></canvas>
+		<div id="words">
+        <div id="messages">
+            亲爱的，这是我们相爱在一起的时光。
+            <div id="elapseClock"></div>
+        </div>
+        <div id="loveu">
+            执子之手，与子偕老。<br/>
+            <div class="signature">- 爱黄佩敏的邓先生</div>
+        </div>
+		</div>
+	</div>
+</div>
+  <div class="cont">
+	<div class="cont1">
+	<div class="polaroid mislider" id="photo1">
+      <div  class="photo" style="background-image: url('images/gril-1.jpg')"></div>
+      <h4>卡哇伊捏</h4></div>
+
+    <div class="polaroid mislider" id="photo2">
+      <div  class="photo" style="background-image: url('images/gril-2.jpg')"></div>
+      <h4>我女朋友</h4></div>
+	
+	<div class="polaroid mislider" id="photo3">
+      <div  class="photo" style="background-image: url('images/gril-3.jpg')"></div>
+      <h4>MARRY ME</h4></div>
+	</div>
+	<div class="cont2">
+    <div class="polaroid mislider" id="photo4">
+      <div  class="photo" style="background-image: url('images/gril-4.jpg')"></div>
+      <h4>一朵“发”</h4></div>
+	  
+	<div class="polaroid mislider" id="photo5">
+      <div  class="photo" style="background-image: url('images/gril-5.jpg')"></div>
+      <h4>风景好看</h4></div>
+	<div class="polaroid mislider" id="photo6">
+      <div  class="photo" style="background-image: url('images/pig.jpg')"></div>
+      <h4>喜欢的样子都有</h4></div>
+  </div>	
+  </div>
+ 
+
+
+<script src='js/jquery.js'></script>
+<script  src="js/index.js"></script>
+<script src="js/garden.js"></script>
+<script src="js/functions.js"></script>
+<script src='js/jquery-2.2.4.min.js'></script>
+<script type="text/javascript">
+    document.addEventListener("WeixinJSBridgeReady", function (){
+	bgm();
+	}, false);
+    function bgm(){ 
+     var audio = document.getElementById("bg-music");
+	 audio.setAttribute("src","music/loveyou.mp3");
+	 audio.play();
+    }
+    var offsetX = $("#loveHeart").width() / 2;
+    var offsetY = $("#loveHeart").height() / 2 - 55;
+    var together = new Date();
+    together.setFullYear(2019, 1, 24);
+    together.setHours(20);
+    together.setMinutes(0);
+    together.setSeconds(0);
+    together.setMilliseconds(0);
+
+    if (!document.createElement('canvas').getContext) {
+        var msg = document.createElement("div");
+        msg.id = "errorMsg";
+        msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+        document.body.appendChild(msg);
+        $("#code").css("display", "none")
+        $("#copyright").css("position", "absolute");
+        $("#copyright").css("bottom", "10px");
+        document.execCommand("stop");
+    } else {
+        setTimeout(function () {
+            startHeartAnimation();
+        }, 5000);
+
+        timeElapse(together);
+        setInterval(function () {
+            timeElapse(together);
+        }, 500);
+
+        adjustCodePosition();
+        $("#code").typewriter();
+    }
+  
+</script>
+</body>
+</html>
